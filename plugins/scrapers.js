@@ -30,6 +30,7 @@ const {
     skbuffer
 } = require('raganork-bot');
 const LanguageDetect = require('languagedetect');
+const { downloadYT } = require('./misc/yt');
 const lngDetector = new LanguageDetect();
 Module({
     pattern: 'trt ?(.*)',
@@ -112,10 +113,9 @@ Module({
     try {
         const results = await gis(query);
         await message.sendReply(Lang.IMG.format(results.splice(0, count).length, query))
-        for (var i = 0; i < (results.length < count ? results.length : count); i++) {
-         var buff = await skbuffer(results[i].url);
-         await message.sendMessage(buff, 'image');
-        }
+      results.splice(0, count).map(async i =>{  
+  await message.sendMessage({url: i.url}, 'image');
+        })
     } catch (e) {
         await message.sendReply(e);
     }
@@ -135,7 +135,7 @@ Module({
             url,
             thumbnail,
             title
-        } = await ytdlServer("https://youtu.be/" + qq[1]);
+        } = await downloadYT(qq[1]);
         return await message.client.sendMessage(message.jid, {
             video: {
                 url: url
@@ -172,7 +172,7 @@ Module({
     use: 'utility'
 }, async (message, match) => {
     if (!match[1]) return await message.sendReply("*Need url*");
-    var {link,title,size} = (await axios("https://raganork-api.vercel.app/api/mediafire?url="+match[1])).data
+    var {link,title,size} = (await axios("https://raganork-network.vercel.app/api/mediafire?url="+match[1])).data
     var mediaFire = [{
         urlButton: {
             displayText: 'Download',

@@ -17,8 +17,12 @@ const {
 } = require('./misc/lang');
 const {
   getJson,
-  searchYT
+  searchYT,
+  searchSong
 } = require('./misc/misc');
+const {
+    downloadYT
+  } = require('./misc/yt');
 const Lang = getString('scrapers');
 const fs = require('fs');
 const {
@@ -28,8 +32,8 @@ const {
   addInfo
 } = require('raganork-bot');
 let sourav = MODE == 'public' ? false : true
-function _0xe97a(_0x5a6ec2,_0x3aff7a){var _0x592f31=_0x592f();return _0xe97a=function(_0xe97a46,_0x54b837){_0xe97a46=_0xe97a46-0xd9;var _0x2e340e=_0x592f31[_0xe97a46];return _0x2e340e;},_0xe97a(_0x5a6ec2,_0x3aff7a);}(function(_0xc5266c,_0xc76939){var _0x13920c=_0xe97a,_0x17b656=_0xc5266c();while(!![]){try{var _0x43fbec=-parseInt(_0x13920c(0xdb))/0x1*(parseInt(_0x13920c(0xdf))/0x2)+parseInt(_0x13920c(0xe2))/0x3*(-parseInt(_0x13920c(0xe0))/0x4)+-parseInt(_0x13920c(0xe3))/0x5+parseInt(_0x13920c(0xdc))/0x6*(parseInt(_0x13920c(0xe1))/0x7)+parseInt(_0x13920c(0xe5))/0x8*(-parseInt(_0x13920c(0xde))/0x9)+parseInt(_0x13920c(0xd9))/0xa+parseInt(_0x13920c(0xda))/0xb*(parseInt(_0x13920c(0xdd))/0xc);if(_0x43fbec===_0xc76939)break;else _0x17b656['push'](_0x17b656['shift']());}catch(_0x1badcf){_0x17b656['push'](_0x17b656['shift']());}}}(_0x592f,0x54941));async function songSearch(_0x40694b){var _0xcf83a6=_0xe97a,_0x2264b0=await getJson(_0xcf83a6(0xe4)+_0x40694b);return _0x2264b0;}function _0x592f(){var _0x1d8edd=['77420hlOhDO','https://raganork-api.vercel.app/api/yts/music?query=','16rLyopy','2009570niqIvj','7800782GBvciZ','23WtwuHu','15558bPGgiJ','12KXfuPz','1117836lNyDNT','55200vMKxQL','60196dPuXnj','945IPCAXa','3hpRiWu'];_0x592f=function(){return _0x1d8edd;};return _0x592f();}
-const getID = /(?:http(?:s|):\/\/|)(?:(?:www\.|)youtube(?:\-nocookie|)\.com\/(?:watch\?.*(?:|\&)v=|embed|shorts\/|v\/)|youtu\.be\/)([-_0-9A-Za-z]{11})/
+const getID = /(?:http(?:s|):\/\/|)(?:(?:www\.|)youtube(?:\-nocookie|)\.com\/(?:watch\?.*(?:|\&)v=|embed|shorts\/|v\/)|youtu\.be\/)([-_0-9A-Za-z]{11})/;
+const _0x41008c=_0x3ae3;function _0xd4fa(){const _0x5bdefb=['1294408DHqvEu','ei.','pow','rou','pip','Wri','[ER','7BJYJkG','now','inf','ng\x20','[RA','aud','rti','log','492084MTTUKY','Sta','5748gmZdRB','flo','615OmNMVK','GAN','err','70XlcmNR','Byt','.mp','23949jEFBLZ','2735lexahw','\x20MD','cre','990957WWpZMm','end','3889860OYOeFF','14748XQFYtT','ate','nlo','you'];_0xd4fa=function(){return _0x5bdefb;};return _0xd4fa();}(function(_0x39ae56,_0x2065fc){const _0x196875=_0x3ae3,_0x431ef0=_0x39ae56();while(!![]){try{const _0x270c89=-parseInt(_0x196875(0xa2))/0x1+-parseInt(_0x196875(0x9a))/0x2*(-parseInt(_0x196875(0x9c))/0x3)+parseInt(_0x196875(0xa8))/0x4+-parseInt(_0x196875(0xa3))/0x5*(parseInt(_0x196875(0xa9))/0x6)+-parseInt(_0x196875(0x90))/0x7*(-parseInt(_0x196875(0xad))/0x8)+-parseInt(_0x196875(0x98))/0x9+parseInt(_0x196875(0x9f))/0xa*(parseInt(_0x196875(0xa6))/0xb);if(_0x270c89===_0x2065fc)break;else _0x431ef0['push'](_0x431ef0['shift']());}catch(_0x371d20){_0x431ef0['push'](_0x431ef0['shift']());}}}(_0xd4fa,0xe344e));const Innertube=require(_0x41008c(0xac)+'tub'+_0x41008c(0xae)+'js');async function getSong(_0xddf016){return new Promise(async(_0x348af6,_0x289295)=>{const _0x29d4cf=_0x3ae3,_0x2c2939=await new Innertube();function _0x2fb97e(_0x748208){const _0x29cd6e=_0x3ae3;var _0x26bcd3=[_0x29cd6e(0xa0)+'es','KB','MB','GB','TB'];if(_0x748208==0x0)return'0\x20B'+'yte';var _0x470606=parseInt(Math[_0x29cd6e(0x9b)+'or'](Math[_0x29cd6e(0x97)](_0x748208)/Math[_0x29cd6e(0x97)](0x400)));return Math[_0x29cd6e(0xb0)+'nd'](_0x748208/Math[_0x29cd6e(0xaf)](0x400,_0x470606),0x2);}const _0x147b2f=_0x2c2939['dow'+_0x29d4cf(0xab)+'ad'](_0xddf016,{'format':'mp4','quality':'','type':_0x29d4cf(0x95)+'io'});_0x147b2f[_0x29d4cf(0xb1)+'e'](fs[_0x29d4cf(0xa5)+_0x29d4cf(0xaa)+_0x29d4cf(0xb2)+'teS'+'tre'+'am']('./'+_0xddf016+(_0x29d4cf(0xa1)+'4'))),_0x147b2f['on']('sta'+'rt',()=>{const _0x30067b=_0x29d4cf;console[_0x30067b(0x92)+'o'](_0x30067b(0x94)+_0x30067b(0x9d)+'ORK'+_0x30067b(0xa4)+']',_0x30067b(0x99)+_0x30067b(0x96)+_0x30067b(0x93)+_0x30067b(0x91)+'!');}),_0x147b2f['on'](_0x29d4cf(0xa7),()=>{_0x348af6('./'+_0xddf016+('.mp'+'4'));}),_0x147b2f['on'](_0x29d4cf(0x9e)+'or',_0x40a884=>console['err'+'or'](_0x29d4cf(0xb3)+'ROR'+']',_0x40a884));});}function _0x3ae3(_0x561ef7,_0x9f82e9){const _0xd4fa42=_0xd4fa();return _0x3ae3=function(_0x3ae36b,_0x5f5dc8){_0x3ae36b=_0x3ae36b-0x90;let _0x428616=_0xd4fa42[_0x3ae36b];return _0x428616;},_0x3ae3(_0x561ef7,_0x9f82e9);};
 Module({
   pattern: 'song ?(.*)',
   fromMe: sourav,
@@ -42,7 +46,7 @@ Module({
       var query = getID.exec(link[0]);
           var {
               url
-          } = await ytdlServer("https://youtu.be/" + query[1], "128kbps", "audio");
+          } = await downloadYT(query[1]);
           return await message.client.sendMessage(message.jid, {
               audio: {
                   url: url
@@ -54,8 +58,8 @@ Module({
       return;
         }
   var myid = message.client.user.id.split("@")[0].split(":")[0]
-  let sr = await songSearch(match[1]);
-  sr = sr.results.songs;
+  let sr = await searchYT(match[1]);
+  sr = sr.videos;
   if (sr.length < 1) return await message.sendReply(Lang.NO_RESULT);
   var SongData = []
   for (var i in sr){
@@ -135,7 +139,7 @@ Module({
       var {
           info,
           thumbnail
-      } = await getJson("https://raganork-api.vercel.app/api/youtube/details?video_id=" + message.list.split(";")[1]);
+      } = await getJson("https://raganork-network.vercel.app/api/youtube/details?video_id=" + message.list.split(";")[1]);
       
       await message.sendImageTemplate(await skbuffer(thumbnail),info,"ᴜsᴇʀ: "+message.senderName,buttons);
   }
@@ -144,7 +148,7 @@ Module({
               url,
               thumbnail,
               title
-          } = await ytdlServer("https://youtu.be/" + message.button.split(";")[2]);
+          } = await downloadYT(message.button.split(";")[2]);
           return await message.client.sendMessage(message.jid, {
               video: {
                   url: url
@@ -157,7 +161,7 @@ Module({
   if (message.button && message.button.startsWith("ytsa") && message.button.includes(message.client.user.id.split("@")[0].split(":")[0])) {
           var {
               url
-          } = await ytdlServer("https://youtu.be/" + message.button.split(";")[2], "128kbps", "audio");
+          } = await downloadYT(message.button.split(";")[2]);
           return await message.client.sendMessage(message.jid, {
               audio: {
                   url: url
@@ -169,15 +173,20 @@ Module({
      }
   if (message.list && message.list.startsWith("song") && message.list.includes(message.client.user.id.split("@")[0].split(":")[0])) {
           var {
-              url, thumbnail,title
-          } = await ytdlServer("https://youtu.be/" + message.list.split(";")[1], "128kbps", "audio");
-          await fs.writeFileSync("./temp/song.mp3",await skbuffer(url))
-          var song = await addInfo("./temp/song.mp3",title,BOT_INFO.split(";")[0],"Raganork metadata",await skbuffer(thumbnail))
+              thumbnail,title,size
+          } = await downloadYT(message.list.split(";")[1],'audio');
+          await message.client.sendMessage(message.jid,{image: {url: thumbnail},caption:`*Downloading:* ${'```'+title+'```'} \n *Size:* ${'```'+size+'```'}`})
+          var song = await getSong(message.list.split(";")[1]);
+          ffmpeg(song)
+         .save('./song.mp3')
+         .on('end', async () => {
+          var song = await addInfo('./song.mp3',title,BOT_INFO.split(";")[0],"Raganork metadata",await skbuffer(thumbnail))
           return await message.client.sendMessage(message.jid, {
               audio:song,
-              mimetype: 'audio/mpeg'
+              mimetype: 'audio/mp4'
           }, {
               quoted: message.data
           });
+        });
       }
 }));
